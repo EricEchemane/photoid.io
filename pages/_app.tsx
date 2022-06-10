@@ -1,9 +1,7 @@
 import '../styles/globals.css';
-// _app.tsx file
 import { GetServerSidePropsContext } from 'next';
 import { useState } from 'react';
 import { AppProps } from 'next/app';
-// install cookies-next package to manage cookies
 import { getCookie, setCookies } from 'cookies-next';
 import { MantineProvider, ColorScheme, ColorSchemeProvider } from '@mantine/core';
 
