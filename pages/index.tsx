@@ -1,10 +1,10 @@
 import { Button, Paper, useMantineColorScheme } from '@mantine/core';
-import useMediaQuery from 'modules/useMediaQuery';
+import { useMediaQuery } from '@mantine/hooks';
 import React from 'react';
 
 export default function Home() {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
-  const largeScreen = useMediaQuery('(min-width: 900px)');
+  const largeScreen = useMediaQuery('(min-width: 900px)', false);
 
   return (
     <div>
