@@ -2,6 +2,11 @@
   "name": "photo-id-io",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "Eric Echemane",
+    "email": "eechemane29@gmail.com",
+    "url": "https://github.com/EricEchemane"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
