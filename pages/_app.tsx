@@ -20,7 +20,6 @@ export default function App(props: AppProps & { colorScheme: ColorScheme; }) {
     <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
       <MantineProvider theme={{
         colorScheme,
-        fontFamily: 'Inter, sans-serif'
       }} withGlobalStyles withNormalizeCSS>
         <Component {...pageProps} />
       </MantineProvider>

@@ -1,20 +1,35 @@
-import { Button, Paper, useMantineColorScheme } from '@mantine/core';
-import { useMediaQuery } from '@mantine/hooks';
-import React from 'react';
+import { Center, Container, Paper, SegmentedControl } from '@mantine/core';
+import ChoosePackage from 'components/ChoosePackage';
+import Head from 'next/head';
+import React, { useState } from 'react';
+
+const actions: { label: string, value: string; }[] = [
+  { value: 'choose', label: 'Choose Package' },
+  { value: 'create', label: 'Create Custom Package' },
+  { value: 'print', label: 'Print Now' },
+];
 
 export default function Home() {
-  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
-  const largeScreen = useMediaQuery('(min-width: 900px)', false);
+  const [currentTab, setCurrentTab] = useState('choose');
 
   return (
-    <div>
-      <Paper p='2rem' m='2rem' shadow='md'>
-        <Button onClick={() => toggleColorScheme()}>
-          {colorScheme}
-        </Button>
-
-        <h1> {largeScreen ? 'large' : 'small'} </h1>
-      </Paper>
-    </div>
+    <>
+      <Head>
+        <title> PhotoId.IO </title>
+      </Head>
+      <Container>
+        <Paper withBorder p='2rem' shadow='lg'>
+          <Center>
+            <SegmentedControl
+              value={currentTab}
+              onChange={setCurrentTab}
+              data={actions}
+              transitionDuration={200}
+              color={'blue'} />
+          </Center>
+          {currentTab === 'choose' && <ChoosePackage />}
+        </Paper>
+      </Container>
+    </>
   );
 }
