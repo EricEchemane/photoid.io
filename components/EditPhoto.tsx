@@ -19,7 +19,8 @@ Requirements
 export default function EditPhoto() {
     const { state, dispatch }: AppStateType = useAppState();
     const smallDevice = useDeviceWidthMatcher(700);
-    const [_, setSavedPhotoUrl] = useLocalStorage({ key: 'photoUrl', defaultValue: photoPlaceHolderUrl });
+    const [_, setSavedPhotoUrl] = useLocalStorage({ key: 'photoUrl', defaultValue: "" });
+    const [__, setSavedPackage] = useLocalStorage({ key: 'package', defaultValue: "" });
     const span = smallDevice ? 12 : 6;
 
     if (state.selectedPackage === null) return (
@@ -36,7 +37,10 @@ export default function EditPhoto() {
             PrintingError.show();
             return;
         }
+        // save the photourl and current selected package in the localstorage
         setSavedPhotoUrl(state.photoUrl);
+        setSavedPackage(JSON.stringify(state.selectedPackage));
+
         window.open(window.location.href + 'print');
     };
 
