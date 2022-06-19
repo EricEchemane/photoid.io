@@ -1,6 +1,7 @@
 import { Center, Container, Paper, SegmentedControl, Space } from '@mantine/core';
 import { useLogger, useMediaQuery } from '@mantine/hooks';
 import ChoosePackage from 'components/ChoosePackage';
+import EditPhoto from 'components/EditPhoto';
 import useAppState, { AppStateType, Actions } from 'contexts/AppState';
 import Head from 'next/head';
 import React from 'react';
@@ -40,6 +41,7 @@ export default function Home() {
           </Center>
           <Space h={40} />
           {state.activeTab === 'choose' && <ChoosePackage />}
+          {state.activeTab === 'edit' && <EditPhoto />}
         </Paper>
       </Container>
     </>
