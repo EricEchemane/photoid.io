@@ -33,7 +33,7 @@ export const dropzoneChildren = (status: DropzoneStatus, theme: MantineTheme) =>
     <Group position="center" spacing="xl" style={{ minHeight: 220, pointerEvents: 'none' }}>
         <ImageUploadIcon status={status} style={{ color: getIconColor(status, theme) }} size={80} />
 
-        <Stack align='center' spacing={0}>
+        <Stack align='center' spacing={5}>
             <Text size="xl" inline>
                 Drag your photo here or click to select one
             </Text>

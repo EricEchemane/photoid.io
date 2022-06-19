@@ -7,7 +7,7 @@ import { PackagePresetType } from "lib/package_presets";
 
 export interface GlobalStateType {
     selectedPackage: PackagePresetType | null;
-    activeTab: 'choose' | 'edit' | 'print';
+    activeTab: 'choose' | 'edit';
     photos: File[];
     photoUrl: string;
 };

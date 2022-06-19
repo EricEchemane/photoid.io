@@ -10,7 +10,7 @@ import React from 'react';
 const actions: { label: string, value: string; }[] = [
   { value: 'choose', label: 'Choose package' },
   { value: 'edit', label: 'Edit Photo' },
-  { value: 'print', label: 'Print now' },
+  // { value: 'print', label: 'Printing' },
 ];
 
 export default function Home() {
