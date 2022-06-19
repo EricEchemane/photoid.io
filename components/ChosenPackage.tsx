@@ -16,10 +16,10 @@ export default function ChosenPackage({ description, items, name, price }: Packa
             }}>
 
             <Grid align={'center'} gutter='xl'>
-                <Grid.Col span={1}>
+                <Grid.Col span={2}>
                     <Title> {name} </Title>
                 </Grid.Col>
-                <Grid.Col span={6}>
+                <Grid.Col span={5}>
                     <Text> {description} </Text>
                 </Grid.Col>
                 <Grid.Col span={5}>
