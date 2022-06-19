@@ -1,4 +1,4 @@
-import { Button, Center, Stack, Text } from '@mantine/core';
+import { Button, Grid, Stack, Text } from '@mantine/core';
 import useAppState, { Actions, AppStateType } from 'contexts/AppState';
 import React from 'react';
 import ChosenPackage from './ChosenPackage';
@@ -23,8 +23,9 @@ export default function EditPhoto() {
     );
 
     return (
-        <Stack>
+        <Grid>
+
             <ChosenPackage {...state.selectedPackage} />
-        </Stack>
+        </Grid>
     );
 }

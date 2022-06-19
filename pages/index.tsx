@@ -1,8 +1,9 @@
 import { Center, Container, Paper, SegmentedControl, Space } from '@mantine/core';
-import { useLogger, useMediaQuery } from '@mantine/hooks';
+import { useLogger } from '@mantine/hooks';
 import ChoosePackage from 'components/ChoosePackage';
 import EditPhoto from 'components/EditPhoto';
 import useAppState, { AppStateType, Actions } from 'contexts/AppState';
+import useDeviceWidthMatcher from 'modules/useDeviceWidthMatcher';
 import Head from 'next/head';
 import React from 'react';
 
@@ -13,7 +14,7 @@ const actions: { label: string, value: string; }[] = [
 ];
 
 export default function Home() {
-  const smallDevice = useMediaQuery('(max-width: 500px)', false);
+  const smallDevice = useDeviceWidthMatcher(500);
   const { state, dispatch }: AppStateType = useAppState();
 
   const setCurrentTab = (value: string) => {
