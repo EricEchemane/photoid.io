@@ -1,17 +1,25 @@
 import { PackagePresetType } from 'lib/package_presets';
-import { Paper, Title, Text, Box, Grid, Image, Button } from '@mantine/core';
+import { Paper, Title, Text, Box, Grid, Image, Button, Group } from '@mantine/core';
 import React from 'react';
 import useAppState, { AppStateType, Actions } from 'contexts/AppState';
+import { ArrowNarrowRight } from 'tabler-icons-react';
 
 export default function PackagePreset({ description, items, name, price }: PackagePresetType) {
     const { state, dispatch }: AppStateType = useAppState();
-    const choosePackage = () => {
-        dispatch({
-            type: Actions.choose_package,
-            payload: { description, items, name, price }
-        });
-    };
     const thisIsSelected = state.selectedPackage?.name === name;
+    const choosePackage = () => {
+        if (thisIsSelected)
+            dispatch({
+                type: Actions.change_tab,
+                payload: 'edit'
+            });
+        else
+            dispatch({
+                type: Actions.choose_package,
+                payload: { description, items, name, price }
+            });
+    };
+
     return (
         <Paper
             withBorder
@@ -51,13 +59,16 @@ export default function PackagePreset({ description, items, name, price }: Packa
                 ))}
             </Box>
 
-            <Button
-                onClick={choosePackage}
-                mt='2rem'
-                variant={thisIsSelected ? 'light' : 'filled'}
-                style={{ float: 'right' }}>
-                {thisIsSelected ? 'SELECTED' : 'Select'}
-            </Button>
+            <Group style={{ justifyContent: 'flex-end' }}>
+                <Button
+                    onClick={choosePackage}
+                    mt='2rem'
+                    variant={thisIsSelected ? 'light' : 'filled'}>
+                    {thisIsSelected
+                        ? (<>CONTINUE <ArrowNarrowRight /></>)
+                        : 'Select'}
+                </Button>
+            </Group>
         </Paper>
     );
 }
