@@ -8,11 +8,15 @@ import { PackagePresetType } from "lib/package_presets";
 export interface GlobalStateType {
     selectedPackage: PackagePresetType | null;
     activeTab: 'choose' | 'edit' | 'print';
+    photos: File[];
+    photoUrl: string;
 };
 
 export enum Actions {
     choose_package = 'choose_package',
-    change_tab = 'change_tab'
+    change_tab = 'change_tab',
+    add_photo = 'add_photo',
+    set_photo_url = 'set_photo_url'
 }
 
 export interface Action {

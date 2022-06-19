@@ -7,6 +7,7 @@ import { ArrowNarrowRight } from 'tabler-icons-react';
 export default function PackagePreset({ description, items, name, price }: PackagePresetType) {
     const { state, dispatch }: AppStateType = useAppState();
     const thisIsSelected = state.selectedPackage?.name === name;
+
     const choosePackage = () => {
         if (thisIsSelected)
             dispatch({
@@ -55,7 +56,7 @@ export default function PackagePreset({ description, items, name, price }: Packa
                             height: `${height}in`,
                         }}
                         key={index}
-                        src={"https://media.istockphoto.com/vectors/person-gray-photo-placeholder-man-vector-id1201514204?k=20&m=1201514204&s=612x612&w=0&h=5404qm1GUfoty4aStYBUFAiCCHwxMy5y3z6cFuV-Qnw="} alt='photo id placeholder' />
+                        src={state.photoUrl} alt='photo id placeholder' />
                 ))}
             </Box>
 
