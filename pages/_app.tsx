@@ -5,6 +5,7 @@ import { AppProps } from 'next/app';
 import { getCookie, setCookies } from 'cookies-next';
 import { MantineProvider, ColorScheme, ColorSchemeProvider } from '@mantine/core';
 import { AppStateProvider } from 'contexts/AppState';
+import { NotificationsProvider } from '@mantine/notifications';
 
 export default function App(props: AppProps & { colorScheme: ColorScheme; }) {
   const { Component, pageProps } = props;
@@ -20,9 +21,11 @@ export default function App(props: AppProps & { colorScheme: ColorScheme; }) {
   return (
     <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
       <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
-        <AppStateProvider>
-          <Component {...pageProps} />
-        </AppStateProvider>
+        <NotificationsProvider>
+          <AppStateProvider>
+            <Component {...pageProps} />
+          </AppStateProvider>
+        </NotificationsProvider>
       </MantineProvider>
     </ColorSchemeProvider>
   );

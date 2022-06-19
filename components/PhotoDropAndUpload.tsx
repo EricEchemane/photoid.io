@@ -3,6 +3,7 @@ import { Upload, Photo, X, Icon as TablerIcon } from 'tabler-icons-react';
 import { Dropzone, DropzoneStatus } from '@mantine/dropzone';
 import useAppState, { Actions, AppStateType } from 'contexts/AppState';
 import convertFileToDataUrl from 'modules/convertFileToDataUrl';
+import { PhotoUploadError } from 'lib/PhotoUploadError';
 
 function getIconColor(status: DropzoneStatus, theme: MantineTheme) {
     return status.accepted
@@ -62,7 +63,7 @@ export function PhotoDropAndUpload() {
         <Dropzone
             multiple={false}
             onDrop={handleDrop}
-            onReject={(files) => console.log('rejected files', files)}
+            onReject={(files) => PhotoUploadError.show(files[0].errors[0].code)}
             maxSize={2 * 1024 ** 2}
             accept={['image/jpg', 'image/jpeg', 'image/png']}
         >
