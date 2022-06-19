@@ -1,4 +1,5 @@
 import { Button, Grid, Group, Stack, Text } from '@mantine/core';
+import { useLocalStorage } from '@mantine/hooks';
 import useAppState, { Actions, AppStateType } from 'contexts/AppState';
 import useDeviceWidthMatcher from 'modules/useDeviceWidthMatcher';
 import React from 'react';
@@ -18,6 +19,7 @@ Requirements
 export default function EditPhoto() {
     const { state, dispatch }: AppStateType = useAppState();
     const smallDevice = useDeviceWidthMatcher(700);
+    const [_, setSavedPhotoUrl] = useLocalStorage({ key: 'photoUrl', defaultValue: photoPlaceHolderUrl });
     const span = smallDevice ? 12 : 6;
 
     if (state.selectedPackage === null) return (
@@ -34,6 +36,7 @@ export default function EditPhoto() {
             PrintingError.show();
             return;
         }
+        setSavedPhotoUrl(state.photoUrl);
         window.open(window.location.href + 'print');
     };
 
