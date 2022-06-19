@@ -1,15 +1,17 @@
 import { Paper, Grid, Title, Box, Text, Image } from '@mantine/core';
+import useAppState, { AppStateType } from 'contexts/AppState';
 import { PackagePresetType } from 'lib/package_presets';
 import React from 'react';
 
 export default function ChosenPackage({ description, items, name, price }: PackagePresetType) {
+    const { state }: AppStateType = useAppState();
     return (
         <Paper
             withBorder
             shadow='md'
             p='2rem'
             style={{
-                width: 'min(470px, 90vw)',
+                width: '100%',
                 height: 'auto',
             }}>
 
@@ -32,12 +34,13 @@ export default function ChosenPackage({ description, items, name, price }: Packa
             }}>
                 {items.map(({ height, width }, index: number) => (
                     <Image
+                        key={index}
                         style={{
                             width: `${width}in`,
                             height: `${height}in`,
+                            overflow: 'hidden'
                         }}
-                        key={index}
-                        src={"https://media.istockphoto.com/vectors/person-gray-photo-placeholder-man-vector-id1201514204?k=20&m=1201514204&s=612x612&w=0&h=5404qm1GUfoty4aStYBUFAiCCHwxMy5y3z6cFuV-Qnw="} alt='photo id placeholder' />
+                        src={state.photoUrl} alt='photo id placeholder' />
                 ))}
             </Box>
         </Paper>

@@ -8,6 +8,8 @@ function reducer(state: GlobalStateType, { type, payload }: Action): GlobalState
             return { ...state, activeTab: payload };
         case Actions.add_photo:
             return { ...state, photos: [...state.photos, payload] };
+        case Actions.set_photo_url:
+            return { ...state, photoUrl: payload };
         default:
             return state;
     }

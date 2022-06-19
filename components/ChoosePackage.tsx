@@ -4,7 +4,7 @@ import package_presets from 'lib/package_presets';
 import React from 'react';
 import PackagePreset from './PackagePreset';
 
-export default function ChoosePackage() {
+function ChoosePackage() {
     const smallDevice = useMediaQuery('(max-width: 500px)', false);
     return <>
         <Box
@@ -35,6 +35,7 @@ export default function ChoosePackage() {
                 <PackagePreset {...package_presets[3]} />
             </Box>
         </Box >
-
     </>;
 }
+
+export default React.memo(ChoosePackage);

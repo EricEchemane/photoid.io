@@ -1,7 +1,10 @@
-import { Button, Grid, Stack, Text } from '@mantine/core';
+import { Box, Button, Grid, Group, Image, Stack, Text } from '@mantine/core';
 import useAppState, { Actions, AppStateType } from 'contexts/AppState';
+import useDeviceWidthMatcher from 'modules/useDeviceWidthMatcher';
 import React from 'react';
 import ChosenPackage from './ChosenPackage';
+import { Upload } from 'tabler-icons-react';
+import { PhotoDropAndUpload } from './PhotoDropAndUpload';
 /*
 Requirements
 1. display the selected package
@@ -12,6 +15,8 @@ Requirements
 */
 export default function EditPhoto() {
     const { state, dispatch }: AppStateType = useAppState();
+    const smallDevice = useDeviceWidthMatcher(700);
+    const span = smallDevice ? 12 : 6;
 
     if (state.selectedPackage === null) return (
         <Stack align='center'>
@@ -23,9 +28,13 @@ export default function EditPhoto() {
     );
 
     return (
-        <Grid>
-
-            <ChosenPackage {...state.selectedPackage} />
+        <Grid justify='center' gutter={30}>
+            <Grid.Col span={span}>
+                <ChosenPackage {...state.selectedPackage} />
+            </Grid.Col>
+            <Grid.Col span={span}>
+                <PhotoDropAndUpload />
+            </Grid.Col>
         </Grid>
     );
 }

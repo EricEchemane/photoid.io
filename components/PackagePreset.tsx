@@ -51,12 +51,14 @@ export default function PackagePreset({ description, items, name, price }: Packa
             }}>
                 {items.map(({ height, width }, index: number) => (
                     <Image
+                        key={index}
                         style={{
                             width: `${width}in`,
                             height: `${height}in`,
+                            overflow: 'hidden'
                         }}
-                        key={index}
-                        src={state.photoUrl} alt='photo id placeholder' />
+                        src={state.photoUrl}
+                        alt='photo id placeholder' />
                 ))}
             </Box>
 
