@@ -1,5 +1,4 @@
 import { Center, Container, Paper, SegmentedControl, Space } from '@mantine/core';
-import { useLogger } from '@mantine/hooks';
 import ChoosePackage from 'components/ChoosePackage';
 import EditPhoto from 'components/EditPhoto';
 import useAppState, { AppStateType, Actions } from 'contexts/AppState';
@@ -20,8 +19,6 @@ export default function Home() {
   const setCurrentTab = (value: string) => {
     dispatch({ type: Actions.change_tab, payload: value });
   };
-
-  useLogger('App', [state]);
 
   return (
     <>
