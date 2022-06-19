@@ -1,11 +1,13 @@
 import { Box } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
+import useAppState, { AppStateType } from 'contexts/AppState';
 import package_presets from 'lib/package_presets';
 import React from 'react';
 import PackagePreset from './PackagePreset';
 
-function ChoosePackage() {
+export default function ChoosePackage() {
     const smallDevice = useMediaQuery('(max-width: 500px)', false);
+    const { state }: AppStateType = useAppState();
     return <>
         <Box
             style={{
@@ -20,9 +22,9 @@ function ChoosePackage() {
                 gap: '2rem',
                 flexDirection: 'column',
             }}>
-                <PackagePreset {...package_presets[0]} />
-                <PackagePreset {...package_presets[2]} />
-                <PackagePreset {...package_presets[4]} />
+                <PackagePreset {...package_presets[0]} photoUrl={state.photoUrl} />
+                <PackagePreset {...package_presets[2]} photoUrl={state.photoUrl} />
+                <PackagePreset {...package_presets[4]} photoUrl={state.photoUrl} />
             </Box>
 
             <Box style={{
@@ -31,11 +33,9 @@ function ChoosePackage() {
                 gap: '2rem',
                 flexDirection: 'column'
             }}>
-                <PackagePreset {...package_presets[1]} />
-                <PackagePreset {...package_presets[3]} />
+                <PackagePreset {...package_presets[1]} photoUrl={state.photoUrl} />
+                <PackagePreset {...package_presets[3]} photoUrl={state.photoUrl} />
             </Box>
         </Box >
     </>;
 }
-
-export default React.memo(ChoosePackage);

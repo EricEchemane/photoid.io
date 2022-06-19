@@ -3,7 +3,6 @@ import useAppState, { Actions, AppStateType } from 'contexts/AppState';
 import useDeviceWidthMatcher from 'modules/useDeviceWidthMatcher';
 import React from 'react';
 import ChosenPackage from './ChosenPackage';
-import { Upload } from 'tabler-icons-react';
 import { PhotoDropAndUpload } from './PhotoDropAndUpload';
 /*
 Requirements

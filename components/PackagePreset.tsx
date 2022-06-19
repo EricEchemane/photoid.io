@@ -4,6 +4,8 @@ import React from 'react';
 import useAppState, { AppStateType, Actions } from 'contexts/AppState';
 import { ArrowNarrowRight } from 'tabler-icons-react';
 
+const photoUrl = "https://media.istockphoto.com/vectors/person-gray-photo-placeholder-man-vector-id1201514204?k=20&m=1201514204&s=612x612&w=0&h=5404qm1GUfoty4aStYBUFAiCCHwxMy5y3z6cFuV-Qnw=";
+
 export default function PackagePreset({ description, items, name, price }: PackagePresetType) {
     const { state, dispatch }: AppStateType = useAppState();
     const thisIsSelected = state.selectedPackage?.name === name;
@@ -57,7 +59,7 @@ export default function PackagePreset({ description, items, name, price }: Packa
                             height: `${height}in`,
                             overflow: 'hidden'
                         }}
-                        src={state.photoUrl}
+                        src={photoUrl}
                         alt='photo id placeholder' />
                 ))}
             </Box>
