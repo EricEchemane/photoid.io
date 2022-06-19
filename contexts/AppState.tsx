@@ -5,11 +5,9 @@ import { createContext } from "react";
 import initial_values from "contexts/initial_values";
 import { PackagePresetType } from "lib/package_presets";
 
-const AppState = createContext<any>({});
-
 export interface GlobalStateType {
     selectedPackage: PackagePresetType | null;
-    activeTab: 'choose' | 'create' | 'print';
+    activeTab: 'choose' | 'edit' | 'print';
 };
 
 export enum Actions {
@@ -22,15 +20,17 @@ export interface Action {
     payload: any;
 };
 
-type params = {
+type DispatchParams = {
     type: Actions,
     payload: any;
 };
 
 export interface AppStateType {
     state: GlobalStateType,
-    dispatch: ({ type, payload }: params) => GlobalStateType;
+    dispatch: ({ type, payload }: DispatchParams) => GlobalStateType;
 }
+
+const AppState = createContext<any>({});
 
 export const AppStateProvider = ({ children }: { children: JSX.Element; }) => {
     const [state, dispatch] = useReducer<any>(reducer, initial_values);
