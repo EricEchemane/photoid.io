@@ -1,6 +1,7 @@
 import { Center, Container, Paper, SegmentedControl, Space } from '@mantine/core';
-import { useMediaQuery } from '@mantine/hooks';
+import { useLogger, useMediaQuery } from '@mantine/hooks';
 import ChoosePackage from 'components/ChoosePackage';
+import useAppState from 'contexts/AppState';
 import Head from 'next/head';
 import React, { useState } from 'react';
 
@@ -13,19 +14,21 @@ const actions: { label: string, value: string; }[] = [
 export default function Home() {
   const [currentTab, setCurrentTab] = useState('choose');
   const smallDevice = useMediaQuery('(max-width: 500px)', false);
+  const { state } = useAppState();
+  useLogger('App', [state]);
   return (
     <>
       <Head>
         <title> PhotoId.IO by Eric Echemane </title>
       </Head>
       <Container style={{ maxWidth: '1080px' }}>
-        <Paper p='1rem'>
+        <Paper >
           <Center>
             <SegmentedControl
+              mt={20}
               value={currentTab}
               onChange={setCurrentTab}
               data={actions}
-              // orientation={smallDevice ? 'vertical' : 'horizontal'}
               size={smallDevice ? 'xs' : 'md'}
               transitionDuration={200}
               color={'blue'} />

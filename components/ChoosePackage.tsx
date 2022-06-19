@@ -11,7 +11,6 @@ export default function ChoosePackage() {
         <Box
             style={{
                 display: 'flex',
-                gap: '2rem',
                 justifyContent: 'center',
                 flexDirection: smallDevice ? 'column' : 'row'
             }}>
@@ -20,7 +19,7 @@ export default function ChoosePackage() {
                 width: 'min(50%, 100vw)',
                 display: 'flex',
                 gap: '2rem',
-                flexDirection: 'column'
+                flexDirection: 'column',
             }}>
                 <PackagePreset {...package_presets[0]} />
                 <PackagePreset {...package_presets[2]} />

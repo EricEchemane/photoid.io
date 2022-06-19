@@ -26,8 +26,8 @@
       "modules": [
         "modules/*"
       ],
-      "types": [
-        "types/*"
+      "contexts": [
+        "contexts/*"
       ],
       "styles": [
         "styles/*"

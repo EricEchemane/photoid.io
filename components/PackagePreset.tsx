@@ -1,8 +1,17 @@
 import { PackagePresetType } from 'lib/package_presets';
 import { Paper, Title, Text, Box, Grid, Image, Button } from '@mantine/core';
 import React from 'react';
+import useAppState from 'contexts/AppState';
+import { Actions } from 'contexts/reducer';
 
 export default function PackagePreset({ description, items, name, price }: PackagePresetType) {
+    const { dispatch } = useAppState();
+    const choosePackage = () => {
+        dispatch({
+            type: Actions.choose_package,
+            payload: { description, items, name, price }
+        });
+    };
     return (
         <Paper
             withBorder
@@ -38,7 +47,12 @@ export default function PackagePreset({ description, items, name, price }: Packa
                 ))}
             </Box>
 
-            <Button mt='2rem' style={{ float: 'right' }}> Select and continue </Button>
+            <Button
+                onClick={choosePackage}
+                mt='2rem'
+                style={{ float: 'right' }}>
+                Select and continue
+            </Button>
         </Paper>
     );
 }
