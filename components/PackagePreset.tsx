@@ -1,23 +1,28 @@
 import { PackagePresetType } from 'lib/package_presets';
 import { Paper, Title, Text, Box, Grid, Image, Button } from '@mantine/core';
 import React from 'react';
-import useAppState from 'contexts/AppState';
+import useAppState, { AppStateType } from 'contexts/AppState';
 import { Actions } from 'contexts/reducer';
 
 export default function PackagePreset({ description, items, name, price }: PackagePresetType) {
-    const { dispatch } = useAppState();
+    const { state, dispatch }: AppStateType = useAppState();
     const choosePackage = () => {
         dispatch({
             type: Actions.choose_package,
             payload: { description, items, name, price }
         });
     };
+    const thisIsSelected = state.selectedPackage?.name === name;
     return (
         <Paper
             withBorder
             shadow='md'
             p='2rem'
-            style={{ width: 'min(470px, 90vw)', height: 'auto' }}>
+            style={{
+                width: 'min(470px, 90vw)',
+                height: 'auto',
+                border: thisIsSelected ? '1px solid dodgerblue' : 'none'
+            }}>
 
             <Grid align={'center'} gutter='xl'>
                 <Grid.Col span={1}>
@@ -50,8 +55,9 @@ export default function PackagePreset({ description, items, name, price }: Packa
             <Button
                 onClick={choosePackage}
                 mt='2rem'
+                variant={thisIsSelected ? 'light' : 'filled'}
                 style={{ float: 'right' }}>
-                Select and continue
+                {thisIsSelected ? 'SELECTED' : 'Select'}
             </Button>
         </Paper>
     );

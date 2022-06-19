@@ -1,13 +1,12 @@
 import { Box } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import package_presets from 'lib/package_presets';
-
 import React from 'react';
 import PackagePreset from './PackagePreset';
 
 export default function ChoosePackage() {
     const smallDevice = useMediaQuery('(max-width: 500px)', false);
-    return (
+    return <>
         <Box
             style={{
                 display: 'flex',
@@ -36,5 +35,6 @@ export default function ChoosePackage() {
                 <PackagePreset {...package_presets[3]} />
             </Box>
         </Box >
-    );
+
+    </>;
 }

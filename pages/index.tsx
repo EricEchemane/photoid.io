@@ -1,9 +1,10 @@
 import { Center, Container, Paper, SegmentedControl, Space } from '@mantine/core';
 import { useLogger, useMediaQuery } from '@mantine/hooks';
 import ChoosePackage from 'components/ChoosePackage';
-import useAppState from 'contexts/AppState';
+import { Actions } from 'contexts/reducer';
+import useAppState, { AppStateType } from 'contexts/AppState';
 import Head from 'next/head';
-import React, { useState } from 'react';
+import React from 'react';
 
 const actions: { label: string, value: string; }[] = [
   { value: 'choose', label: 'Choose package' },
@@ -12,9 +13,11 @@ const actions: { label: string, value: string; }[] = [
 ];
 
 export default function Home() {
-  const [currentTab, setCurrentTab] = useState('choose');
   const smallDevice = useMediaQuery('(max-width: 500px)', false);
-  const { state } = useAppState();
+  const { state, dispatch }: AppStateType = useAppState();
+  const setCurrentTab = (value: string) => {
+    dispatch({ type: Actions.change_tab, payload: value });
+  };
   useLogger('App', [state]);
   return (
     <>
@@ -26,7 +29,7 @@ export default function Home() {
           <Center>
             <SegmentedControl
               mt={20}
-              value={currentTab}
+              value={state.activeTab}
               onChange={setCurrentTab}
               data={actions}
               size={smallDevice ? 'xs' : 'md'}
@@ -34,7 +37,7 @@ export default function Home() {
               color={'blue'} />
           </Center>
           <Space h={40} />
-          {currentTab === 'choose' && <ChoosePackage />}
+          {state.activeTab === 'choose' && <ChoosePackage />}
         </Paper>
       </Container>
     </>
