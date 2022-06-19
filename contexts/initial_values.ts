@@ -1,9 +1,4 @@
-import { PackagePresetType } from "lib/package_presets";
-
-export interface GlobalStateType {
-    selectedPackage: PackagePresetType | null;
-    activeTab: 'choose' | 'create' | 'print';
-};
+import { GlobalStateType } from "contexts/AppState";
 
 const initial_values: GlobalStateType = {
     selectedPackage: null,

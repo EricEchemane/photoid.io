@@ -1,8 +1,7 @@
 import { PackagePresetType } from 'lib/package_presets';
 import { Paper, Title, Text, Box, Grid, Image, Button } from '@mantine/core';
 import React from 'react';
-import useAppState, { AppStateType } from 'contexts/AppState';
-import { Actions } from 'contexts/reducer';
+import useAppState, { AppStateType, Actions } from 'contexts/AppState';
 
 export default function PackagePreset({ description, items, name, price }: PackagePresetType) {
     const { state, dispatch }: AppStateType = useAppState();

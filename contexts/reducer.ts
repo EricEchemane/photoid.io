@@ -1,14 +1,4 @@
-import { GlobalStateType } from "contexts/initial_values";
-
-export enum Actions {
-    choose_package = 'choose_package',
-    change_tab = 'change_tab'
-}
-
-export interface Action {
-    type: Actions;
-    payload: any;
-};
+import { Action, Actions, GlobalStateType } from "contexts/AppState";
 
 function reducer(state: GlobalStateType, { type, payload }: Action): GlobalStateType {
     switch (type) {

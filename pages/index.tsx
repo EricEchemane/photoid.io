@@ -1,8 +1,7 @@
 import { Center, Container, Paper, SegmentedControl, Space } from '@mantine/core';
 import { useLogger, useMediaQuery } from '@mantine/hooks';
 import ChoosePackage from 'components/ChoosePackage';
-import { Actions } from 'contexts/reducer';
-import useAppState, { AppStateType } from 'contexts/AppState';
+import useAppState, { AppStateType, Actions } from 'contexts/AppState';
 import Head from 'next/head';
 import React from 'react';
 
