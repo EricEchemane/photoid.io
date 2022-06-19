@@ -38,7 +38,8 @@ export default function ChosenPackage({ description, items, name, price }: Packa
                         style={{
                             width: `${width}in`,
                             height: `${height}in`,
-                            overflow: 'hidden'
+                            overflow: 'hidden',
+                            border: '1px solid hsla(0,0%,0%,.3)'
                         }}
                         src={state.photoUrl} alt='photo id placeholder' />
                 ))}

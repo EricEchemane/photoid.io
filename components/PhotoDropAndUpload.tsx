@@ -63,7 +63,7 @@ export function PhotoDropAndUpload() {
             multiple={false}
             onDrop={handleDrop}
             onReject={(files) => console.log('rejected files', files)}
-            maxSize={15 * 1024 ** 2}
+            maxSize={2 * 1024 ** 2}
             accept={['image/jpg', 'image/jpeg', 'image/png']}
         >
             {(status) => dropzoneChildren(status, theme)}

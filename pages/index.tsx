@@ -21,7 +21,7 @@ export default function Home() {
     dispatch({ type: Actions.change_tab, payload: value });
   };
 
-  useLogger('App', [state.photoUrl]);
+  useLogger('App', [state]);
 
   return (
     <>
