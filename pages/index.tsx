@@ -1,7 +1,8 @@
 import { Center, Container, Paper, SegmentedControl, Space } from '@mantine/core';
-import { useLogger } from '@mantine/hooks';
+import { useLocalStorage, useLogger } from '@mantine/hooks';
 import ChoosePackage from 'components/ChoosePackage';
 import EditPhoto from 'components/EditPhoto';
+import { photoPlaceHolderUrl } from 'contexts/initial_values';
 import useAppState, { AppStateType, Actions } from 'contexts/AppState';
 import useDeviceWidthMatcher from 'modules/useDeviceWidthMatcher';
 import Head from 'next/head';
@@ -16,6 +17,7 @@ const actions: { label: string, value: string; }[] = [
 export default function Home() {
   const smallDevice = useDeviceWidthMatcher(500);
   const { state, dispatch }: AppStateType = useAppState();
+  const [value, setValue] = useLocalStorage({ key: 'photoUrl', defaultValue: photoPlaceHolderUrl });
 
   const setCurrentTab = (value: string) => {
     dispatch({ type: Actions.change_tab, payload: value });

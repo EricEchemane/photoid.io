@@ -1,9 +1,12 @@
-import { Box, Button, Grid, Group, Image, Stack, Text } from '@mantine/core';
+import { Button, Grid, Group, Stack, Text } from '@mantine/core';
 import useAppState, { Actions, AppStateType } from 'contexts/AppState';
 import useDeviceWidthMatcher from 'modules/useDeviceWidthMatcher';
 import React from 'react';
 import ChosenPackage from './ChosenPackage';
 import { PhotoDropAndUpload } from './PhotoDropAndUpload';
+import { Printer } from 'tabler-icons-react';
+import { photoPlaceHolderUrl } from 'contexts/initial_values';
+import { PrintingError } from 'lib/notifications';
 /*
 Requirements
 1. display the selected package
@@ -26,14 +29,34 @@ export default function EditPhoto() {
         </Stack>
     );
 
+    const openPrintPage = () => {
+        if (state.photoUrl === photoPlaceHolderUrl) {
+            PrintingError.show();
+            return;
+        }
+        window.open(window.location.href + 'print');
+    };
+
     return (
-        <Grid justify='center' gutter={30}>
-            <Grid.Col span={span}>
-                <ChosenPackage {...state.selectedPackage} />
-            </Grid.Col>
-            <Grid.Col span={span}>
-                <PhotoDropAndUpload />
-            </Grid.Col>
-        </Grid>
+        <>
+            <Grid justify='center' gutter={30}>
+                <Grid.Col span={span}>
+                    <ChosenPackage {...state.selectedPackage} />
+                </Grid.Col>
+                <Grid.Col span={span}>
+                    <PhotoDropAndUpload />
+                </Grid.Col>
+            </Grid>
+
+            <Group py={20} style={{ justifyContent: 'flex-end' }}>
+                <Button
+                    onClick={openPrintPage}
+                    variant='light'
+                    size='lg'
+                    leftIcon={<Printer />}>
+                    Print now
+                </Button>
+            </Group>
+        </>
     );
 }

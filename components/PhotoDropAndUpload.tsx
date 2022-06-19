@@ -3,7 +3,7 @@ import { Upload, Photo, X, Icon as TablerIcon } from 'tabler-icons-react';
 import { Dropzone, DropzoneStatus } from '@mantine/dropzone';
 import useAppState, { Actions, AppStateType } from 'contexts/AppState';
 import convertFileToDataUrl from 'modules/convertFileToDataUrl';
-import { PhotoUploadError } from 'lib/PhotoUploadError';
+import { PhotoUploadError } from 'lib/notifications';
 
 function getIconColor(status: DropzoneStatus, theme: MantineTheme) {
     return status.accepted

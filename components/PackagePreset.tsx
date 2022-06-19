@@ -69,9 +69,10 @@ function PackagePreset({ description, items, name, price }: PackagePresetType) {
                 <Button
                     onClick={choosePackage}
                     mt='2rem'
+                    rightIcon={thisIsSelected ? <ArrowNarrowRight /> : null}
                     variant={thisIsSelected ? 'light' : 'filled'}>
                     {thisIsSelected
-                        ? (<>CONTINUE <ArrowNarrowRight /></>)
+                        ? 'Continue'
                         : 'Select'}
                 </Button>
             </Group>
